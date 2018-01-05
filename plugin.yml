@@ -4,6 +4,12 @@ version: 1.0.0
 api: 3.0.0-ALPHA10
 
 commands:
+ myxp:
+  description: Shows your XP
+  default: true
+ enchants:
+  description: 
+  default: true
  home:
   description: Teleports you home
   default: true
