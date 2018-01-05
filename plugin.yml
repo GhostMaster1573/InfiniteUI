@@ -1,1 +1,18 @@
+name: CoreFeatures
+main: kenygamer\CoreFeatures\Main
+version: 1.0.0
+api: 3.0.0-ALPHA10
 
+commands:
+ home:
+  description: Teleports you home
+  default: true
+ sethome:
+  description: Sets your home
+  default: true
+ mine:
+  description: Teleports you to your mine
+  default: true
+ setmine:
+  description: Sets your mine
+  default: true
