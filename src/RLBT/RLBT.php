@@ -26,5 +26,5 @@ class RLBT extends PluginBase{
             return false;
         }
         
-        $name = strtolower($sender->
+        $name = $sender->getName();
         $action = strtolower($args[0]);
