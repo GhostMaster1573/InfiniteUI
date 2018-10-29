@@ -1,0 +1,147 @@
+ore-generator: #settings related to the ore generator system
+ block: 121 #the block id that on top of it will generate random ores. Default: endstone (121)
+ regeneration-time: 1 #seconds to wait before ore is regenerated when broken
+ #worlds where the ore generator system is enabled. Leave empty ([]) for it to work in all worlds.
+ worlds: []
+ 
+mining: #settings related to the mining tree system
+ default-money: 2000 #set the default money players will start with (connected with EconomyAPI)
+ upgrade-remove-old-tool: true #choose whether to remove the old tool of inv on upgrade and just keep the upgraded / usable one
+ tools: #define settings per tool type: stone, iron and diamodn
+  stone: #each of the tools have the same settings, so only stone is being documented
+   base-cost: 1000 #set the cost of buying a stone leveled 1
+   upgrade-cost-percent-increase: 100 #set the % increase in reference to the base cost when leveling up
+   max-level: 10 #set the max level this item can be leveled up until the next tool needs to be bought
+   base-payout: "1-5" #set the range of payout when mining ("lowest-highest"). It will pick a random value when paying out (can be a float)
+   upgrade-payout-percent-increase: 10 #set the % increase in reference to the base payout when leveling up
+   per-level-enchants: #optionally configure enchants per tool. Leave per-level-enchants: [] for none
+    10: #the level of the tool will have the following enchants
+     efficiency: [3, "Mega-Miner III"] #the enchant name: [the enchant level, "custom enchant name tag"]
+  iron:
+   base-cost: 20000
+   upgrade-cost-percent-increase: 10
+   max-level: 10
+   base-payout: "11-14"
+   upgrade-payout-percent-increase: 10
+   per-level-enchants:
+    10:
+     efficiency: [3, "Mega-Miner III"]
+  diamond:
+   base-cost: 50000
+   upgrade-cost-percent-increase: 6
+   max-level: 11
+   base-payout: "20-30"
+   upgrade-payout-percent-increase: 10
+   per-level-enchants:
+    9:
+     efficiency: [1, "Mega-Miner I"]
+    10:
+     efficiency: [2, "Mega-Miner II"]
+    11:
+     efficiency: [3, "Mega-Miner III"]
+     
+ trees: #trees can be managed via /tree list. doesn't need to be manually touched.
+  -
+   pos1: [362, 70, 323]
+   pos2: [358, 75, 320]
+   world: homestead
+   block: 42
+  -
+   pos1: [362, 71, 327]
+   pos2: [358, 74, 330]
+   world: homestead
+   block: 42
+   
+#all possible languages of this plugin and their messages. {%0}, {%1} and so on represent variables that are translated depending on the context of the message.
+#make sure you didn't miss out any quotes (enter the start & ending quotes for each language message)
+lang:
+ tree-usage: "&cUsage: /tree <pos1/pos2/create/delete/list>"
+ tree-pos1-saved: "&aFirst position set at &b{%0}"
+ tree-pos2-saved: "&aSecond position set at &b{%0}"
+ tree-pos2-pos1-not-set: "&cPlease save the initial position first."
+ tree-pos2-other-world: "&cYou may only select both positions in the same world."
+ tree-create-pos-not-set: "&cPlease save first and second position. Select them with /tree <pos1/pos2>"
+ tree-create-invalid-block: "&cThe block entered is invalid. Please try again."
+ tree-create-ui-title: "&lSpecify the minable block"
+ tree-create-ui-label: "Please indicate the block that players will be able to mine out of the tree."
+ tree-create-ui-input-placeholder: "Block Name or ID"
+ tree-create-success: "&aYou successfully created a mining tree with the minable block set to &b{%0}"
+ tree-delete-usage: "&cUsage: /tree delete <treeID>"
+ tree-delete-invalid-tree: "&cNo tree with that ID exists, try /tree list for all tree IDs."
+ tree-delete-success: "&aYou successfully deleted the mining tree."
+ tree-list-usage: "&cUsage: /tree list"
+ tree-list-none: "&cThere are no mining trees in this server."
+ tree-list-invalid-page: "&cThat page does not exist."
+ tree-list-title: "&b----- &bShowing mining tree list page &f{%0} &bof&f {%1} &b-----"
+ tree-list-tree: "&a{%0} &b=> &e{%1}"
+ tree-list-next-page: "&b----- Type &f/tree list {%0} &bfor more -----"
+ 
+ mining-wrong-block: "&cThis part of the tree is not mineable! Try mining {%0}"
+ mining-no-access: "&cYou have no permission to mine this tree."
+ mining-use-tool: "&cYou can only mine this tree using one of the tools at /buy"
+ mining-wrong-tool-version: "&cYou can only mine using the {%0} version of this tool."
+ mining-payout-popup: "&aYou have earned &b${%0}"
+ 
+ only-player: "&cCommand may only be used in-game."
+ 
+ hud-turned-on: "&aYour HUD was turned ON."
+ hud-turned-off: "&aYour HUD was turned OFF."
+ 
+ adminhud-usage: "&cUsage: /adminhud <add/delete/list>"
+ adminhud-add-usage: "&cUsage: /adminhud add <message>"
+ adminhud-add-usage-2: "&bTags available: &f{%0}"
+ adminhud-add-success: "&aYou successfully added the message to the list."
+ adminhud-delete-usage: "&cUsage: /adminhud delete <messageKey>"
+ adminhud-delete-invalid-key: "&cNo message with that key exists, try /adminhud list for all message keys."
+ adminhud-delete-success: "&aYou successfully deleted the message from the list."
+ adminhud-list-usage: "&cUsage: /adminhud list"
+ adminhud-list-no-messages: "&cThere are no messages configured."
+ adminhud-list-invalid-page: "&cThat page does not exist."
+ adminhud-list-title: "&b----- &bShowing message list page &f{%0} &bof&f {%1} &b-----"
+ adminhud-list-message: "&a{%0} &b=> &e{%1}"
+ adminhud-list-next-page: "&b----- Type &f/adminhud list {%0} &bfor more -----"
+ 
+ buy-ui-title: "&lBuy a mining tree tool"
+ buy-ui-content: "To mine in special trees you will need to use a specific mining tool. There are stone, iron and diamond tools available. However, when buying a tool, you will receive a stone tool that needs to be leveled up over time. This costs ${%0}."
+ buy-ui-content-2: "IMPORTANT: If you already bought a tool before then this will reset your stats (UNLESS YOU WANT TO START FROM ZERO). Are you sure of this?"
+ buy-ui-button-continue: "Continue"
+ buy-ui-button-cancel: "Cancel"
+ buy-no-money: "&cYou don't have enough money to do this. Please try again."
+ buy-no-inventory-space: "&cYou don't have enough inventory slot to buy a mining tree tool. Please try again."
+ buy-success: "&aYou successfully bought a mining tree tool."
+ 
+ upgrade-tool-not-found: "&cCouldn't find a mining tool in your inventory. Please try again."
+ upgrade-wrong-tool-version: "&cYou can only upgrade using the {%0} version of this tool."
+ upgrade-ui-title: "&lUpgrade your mining tree tool"
+ upgrade-ui-levelup-available-content: "Your {%0} tool is at level {%1} and it costs ${%2} to upgrade to the next level."
+ upgrade-ui-levelup-available-content-2: "Your mining payout will increase from {%0} to {%1}"
+ upgrade-ui-levelup-available-content-3: "Would you like to proceed?"
+ upgrade-ui-levelup-available-button-continue: "Continue"
+ upgrade-ui-levelup-available-button-cancel: "Cancel"
+ upgrade-levelup-no-money: "&cYou don't have enough money to do this. Please try again."
+ upgrade-levelup-success: "&aYou successfully leveled up your {%0} tool to level {%1}."
+ upgrade-ui-max-level-upgrade-content: "Your {%0} tool has leveled up the most. You can now upgrade to the {%1} version."
+ upgrade-ui-max-level-upgrade-content-2: "Your mining payout range will increase from {%0} to {%1}."
+ upgrade-ui-max-level-upgrade-content-3: "Would you like to upgrade for ${%0}?"
+ upgrade-ui-max-level-upgrade-button-continue: "Continue"
+ upgrade-ui-max-level-upgrade-button-cancel: "Cancel"
+ upgrade-upgrade-no-money: "&cYou don't have enough money to do this. Please try again."
+ upgrade-upgrade-success: "&aYou successfully upgraded your {%0} tool to a {%1} tool."
+ upgrade-ui-max-level-no-upgrade-content: "Your diamond tool has leveled up the most and there are no further upgrades."
+ upgrade-ui-max-level-no-upgrade-content-2: "Would you like to buy a new tool (start from zero)?"
+ upgrade-ui-max-level-no-upgrade-button-continue: "Continue"
+ upgrade-ui-max-level-no-upgrade-button-cancel: "Cancel"
+ 
+ popup-held-tool: "&bMining Tree Tool\n&7{%0} {%1}"
+ popup-held-tool-enchant-entry: "&7{%0} {%1}"
+ popup-held-wrong-tool: "&cYou can't use this tool"
+ 
+hud: #settings for player huds
+ follow-order: true #choose whether to follow the order of the messages e.g 12345 or random e.g 53145 with chances of being repeated
+ refresh-rate: 3 #refresh rate in seconds. must be a multiplier of 3. e.g 3, 6, 9, 12. Suggested to be kept in 3, the min value.
+ messages: #these messages are configured in /hud list. eventually you might have to fix the indexing if you are using an ordered display mode & ids don't follow the order 0,1,2,3 and so on (e.g 0,2,3,4).
+  - "Hello, {PLAYER}"
+  - "You're playing in GhostsInfinite"
+  - "There are {ONLINE} out of {MAX} players online"
+  - "Your money: ${MONEY}"
+  - "Your mining tool: {MINING_TOOL_NAME} {MINING_TOOL_LEVEL}"
