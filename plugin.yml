@@ -1,0 +1,50 @@
+name: GICore
+main: GICore\GICore
+api: [3.1.0, 4.0.0, 5.0.0]
+version: 1.0.0-beta
+
+load: STARTUP
+author: kenygamer
+description: The core of GhostsInfinite with a variety of features
+
+commands:
+ hud:
+  description: "Allows you to turn OFF or ON your information bar."
+  permission: gicore.command.hud
+  usage: "/hud"
+ adminhud:
+  description: "Allows you to configure the information bar."
+  permission: gicore.command.adminhud
+  usage: "/adminhud <add/delete/list>"
+ tree:
+  description: "Allows you to manage the server mining trees."
+  permission: gicore.command.tree
+  usage: "/tree <pos1/pos2/create/delete/list>"
+ buy:
+  description: "Allows you to buy a tool to mine in special trees."
+  permission: gicore.command.buy
+  usage: "/buy"
+ upgrade:
+  description: "Allows you to upgrade your mining tree tool."
+  permission: gicore.command.upgrade
+  usage: "/upgrade"
+  
+permissions:
+ gicore.miningtree.access:
+  description: "Allows access to get paid by mining in special trees."
+  default: true
+ gicore.command.hud:
+  description: "Allows access to the hud command."
+  default: true
+ gicore.command.adminhud:
+  description: "Allows access to the adminhud command."
+  default: op
+ gicore.command.tree:
+  description: "Allows access to the tree command."
+  default: op
+ gicore.command.buy:
+  description: "Allows access to the buy command."
+  default: true
+ gicore.command.upgrade:
+  description: "Allows access to the upgrade command."
+  default: true
